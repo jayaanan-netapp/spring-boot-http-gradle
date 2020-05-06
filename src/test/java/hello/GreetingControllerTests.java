@@ -40,7 +40,7 @@ public class GreetingControllerTests {
     public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
         this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello there, World!"));
+                .andExpect(jsonPath("$.content").value("Hello there, Jenkins-X"));
     }
 
     @Test
@@ -48,19 +48,5 @@ public class GreetingControllerTests {
         this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk());
     }
 
-    @Test
-    public void paramGreetingShouldReturnTailoredMessage() throws Exception {
-
-        this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello there, Spring Community!"));
-    }
-
-    @Test
-    public void paramDefaultEndpointShouldReturnTailoredMessage() throws Exception {
-        this.mockMvc.perform(get("/").param("name", "Spring Community"))
-                .andDo(print()).andExpect(status().isOk());
-    }
-    
 
 }
