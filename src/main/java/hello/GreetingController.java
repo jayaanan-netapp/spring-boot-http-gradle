@@ -12,13 +12,13 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name", defaultValue="Jenkins-X") String name) { 
+    public Greeting greeting(@RequestParam(value="name", defaultValue="UM.NEXT") String name) {
 	    return new Greeting(counter.incrementAndGet(),
                             String.format(template, name));
     }
 
     @RequestMapping("/")
-    public String defaultEndpoint(@RequestParam(value="name", defaultValue="Jenkins-X") String name) {
+    public String defaultEndpoint(@RequestParam(value="name", defaultValue="UM.NEXT") String name) {
 	    return String.format(template, name);
     }
 }
